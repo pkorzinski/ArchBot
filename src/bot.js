@@ -28,7 +28,7 @@ bot.message((msg) => {
     icon_emoji: config('dog'),
     channel: msg.channel,
     username: 'Dogebot',
-    text: `Wow such message very doge"`
+    text: `Wow such message very doge!!!`
   }, (err, data) => {
     if (err) throw err
 
