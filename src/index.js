@@ -22,14 +22,14 @@ if (config('PROXY_URI')) {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => { res.send('\n 👋 🌍 \n') })
+app.get('/', (req, res) => { res.send('\n Dogebot is up and running!! Such server wow \n') })
 
 app.post('/commands/starbot', (req, res) => {
   let payload = req.body
 
   if (!payload || payload.token !== config('STARBOT_COMMAND_TOKEN')) {
-    let err = '✋  Star—what? An invalid slash token was provided\n' +
-              '   Is your Slack slash token correctly configured?'
+    let err = 'An invalid slash token was provided\n' +
+              'Is your Slack slash token correctly configured?'
     console.log(err)
     res.status(401).end(err)
     return
@@ -45,10 +45,10 @@ app.post('/commands/starbot', (req, res) => {
 app.listen(config('PORT'), (err) => {
   if (err) throw err
 
-  console.log(`\n🚀  Starbot LIVES on PORT ${config('PORT')} 🚀`)
+  console.log(`\nDOGEBOT LIVES on PORT ${config('PORT')} Woof`)
 
   if (config('SLACK_TOKEN')) {
-    console.log(`🤖  beep boop: @starbot is real-time\n`)
+    console.log(`@dogebot is real-time wow!! such server\n`)
     bot.listen({ token: config('SLACK_TOKEN') })
   }
 })
