@@ -6,13 +6,15 @@ const _ = require('lodash')
 const config = require('./config')
 
 let bot = slack.rtm.client()
+var storedMessagesInMemory = [];
 
 bot.started((payload) => {
   this.self = payload.self
 })
 
 bot.message((msg) => {
-  console.log(msg)
+  storedMessagesInMemory.push(msg);
+  console.log(storedMessagesInMemory)
   if (!msg.user) return
   if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return
 
