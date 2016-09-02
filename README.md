@@ -1,78 +1,53 @@
-<<<<<<< HEAD
-# 🌟 Starbot
+# Project Name
 
-![Starbot](https://heroku-www-files.s3.amazonaws.com/starbot/starbot-banner.png)
+> DogeBot 9000 - So Project Much Wow
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+## Team
 
-Starbot is [GitHub's trending open-source](https://github.com/trending/) page, reincarnated as a Slack bot. It is also the sample referenced in the ["How to Deploy Your Slack Bots to Heroku"](https://blog.heroku.com/archives/2016/3/9/how-to-deploy-your-slack-bots-to-heroku) blog post.
+  - __Product Owner__: Jason Holtkamp (@holtkam2)
+  - __Scrum Master__: Patrik Korzinski (@pkorzinski)
+  - __Development Team Members__: Michael Daof (@MichaelDaof),
+                                  Jim Yang (@sourjam)
+
+## Table of Contents
+
+1. [Usage](#Usage)
+2. [Requirements](#requirements)
+3. [Development](#development)
+    a. [Installing Dependencies](#installing-dependencies)
+    b. [Tasks](#tasks)
+4. [Team](#team)
+5. [Contributing](#contributing)
+
+## Usage
+
+> A simple front end interface for control of DogeBot on slack. Access to message history and basic search of messages.
+
+## Requirements
+
+- Node 6.1.0
+- Redis 2.6.x
+- Postgresql 9.1.x
 
 
-### Supported `/slash` commands
+## Development
 
-Create a `/starbot` [custom slash command](https://api.slack.com/slash-commands), using the URL: `{app-name}.herokuapp.com/commands/starbot`. *Take note of the provided `token`, this is used to verify requests come from Slack.*
 
-- `/starbot` or `/starbot help` - List available commands
-- `/starbot repos` - Display trending GitHub projects
+### Installing Dependencies
 
-### Install
+From within the root directory:
 
-```shell
-$ npm install
+```sh
+sudo npm install -g bower
+npm install
+bower install
 ```
 
-### Copy `.env-example` to `.env`
+### Roadmap
 
-```shell
-$ cp .env-example .env
-```
+View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
 
-### Configure
 
-```shell
-SLACK_TEAM_TOKEN=xoxb...8WRqKWx
-NODE_ENV=development
-PORT=3000
-```
-### Run
+## Contributing
 
-```shell
-$ npm start
-
-🚀 Starbot LIVES on PORT 3000 🚀
-```
-
-Visit [localhost:3000](http://localhost:3000).
-
-### Deploy
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-_Or with the [Heroku Toolbelt](https://toolbelt.heroku.com)_
-
-```shell
-$ heroku create {optional-app-name}
-
-Creating app... done, stack is cedar-14
-https://blooming-scrubland-64464.herokuapp.com/
-
-$ git push heroku master
-...
-remote: -----> Node.js app detected
-...
-remote:        https://blooming-scrubland-64464.herokuapp.com/ deployed to Heroku
-...
-To https://git.heroku.com/blooming-scrubland-64464.git
- * [new branch]      master -> master
-
-$ heroku open
-```
-
-### License
-
-**[This project is licensed under the terms of the MIT license.](http://license-me.herokuapp.com)**
- -- [_Need your own? There's a button for that :wink:_](https://github.com/mattcreager/license)
-=======
-# hrr18-doge-bot
-HRR18 Greenfield Project - BotServer
->>>>>>> 3c8530a216fb0b9174753130d73e607cedc6acca
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
