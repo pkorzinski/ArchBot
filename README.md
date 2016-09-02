@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌟 Starbot
 
 ![Starbot](https://heroku-www-files.s3.amazonaws.com/starbot/starbot-banner.png)
@@ -71,3 +72,7 @@ $ heroku open
 
 **[This project is licensed under the terms of the MIT license.](http://license-me.herokuapp.com)**
  -- [_Need your own? There's a button for that :wink:_](https://github.com/mattcreager/license)
+=======
+# hrr18-doge-bot
+HRR18 Greenfield Project - BotServer
+>>>>>>> 3c8530a216fb0b9174753130d73e607cedc6acca
