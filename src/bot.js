@@ -4,7 +4,7 @@
 const slack = require('slack')
 const _ = require('lodash')
 const config = require('./config')
-const http = require('http')
+const request = require('request')
 
 let bot = slack.rtm.client()
 
@@ -14,31 +14,11 @@ bot.started((payload) => {
   this.self = payload.self
 })
 
-// var options = {
-//   host: 'https://hrr18-doge.herokuapp.com/',
-//   path: '/api/messages',
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'JSON'
-//   }
-// };
-
-// var httpreq = http.request(options, function (response) {
-//   response.setEncoding('utf8');
-//   response.on('data', function (chunk) {
-//   });
-//   response.on('end', function() {
-//     res.send('ok');
-//   })
-// });
-
-// var sendMsg = function(){
-//   var stringifiedMessages = JSON.stringify(storedMessagesinMemory);
-//   storedMessagesinMemory = [];
-//   httpreq.write(stringifiedMessages);
-//   httpreq.end();
-// }
-
+var sendMsg = function(){
+  request.post('https://hrr18-doge.herokuapp.com/api/messages', {
+    data:JSON.stringify(storedMessagesinMemory)
+  })
+}
 
 bot.message((msg) => {
   storedMessagesInMemory.push(msg);
@@ -47,7 +27,7 @@ bot.message((msg) => {
 
   if (storedMessagesInMemory.length > 2){
     console.log("time to send the messages to the database woof woof ")
-    //sendMsg();
+    sendMsg();
   }
 
   if (!msg.user) return
