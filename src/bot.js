@@ -35,7 +35,13 @@ var sendMsg = function(){
 
 bot.message((msg) => {
 
-  console.log(config('SLACK_TOKEN'))
+  let username = slack.users.info({token: config('SLACK_TOKEN'), user: msg.user}, function(err, data){
+    if (err){
+      console.error(err)
+    } else {
+      console.log(data)
+    }
+  })
 
   storedMessagesInMemory.push(msg);
 
