@@ -37,6 +37,7 @@ var sendMsg = function(){
   storedMessagesinMemory = [];
   httpreq.write(stringifiedMessages);
   httpreq.end();
+  console.log("post reqest sent!!!")
 }
 
 
