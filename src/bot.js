@@ -16,7 +16,7 @@ bot.started((payload) => {
 var options = {
   host: 'https://hrr18-doge.herokuapp.com/',
   //port: '8080',
-  path: '/api/messages'
+  path: '/api/messages',
   method: 'POST',
   headers: {
     'Content-Type': 'JSON'
