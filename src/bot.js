@@ -8,7 +8,7 @@ const request = require('request')
 
 let bot = slack.rtm.client();
 
-let users = slack.users.list(config('SLACK_TOKEN'), function(err, res){
+let users = slack.users.list(config('xoxb-75559597040-HRAawmZnEeEhwAK53FXbnfiT'), function(err, res){
   if (err){
     console.error(err);
   } else {
