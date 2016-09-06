@@ -21,7 +21,7 @@ var sendMsg = function(){
     headers: {
       'Content-Type': 'application/json'
     },
-    data: JSON.stringify(storedMessagesInMemory)
+    body: JSON.stringify(storedMessagesInMemory)
   })
 }
 
