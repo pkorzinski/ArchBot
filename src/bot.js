@@ -6,7 +6,7 @@ const _ = require('lodash')
 const config = require('./config')
 const request = require('request')
 
-let bot = slack.rtm.client()
+let bot = slack.rtm.client();
 
 let storedMessagesInMemory = [];
 
@@ -27,10 +27,10 @@ var sendMsg = function(){
 
 bot.message((msg) => {
   storedMessagesInMemory.push(msg);
-  console.log(storedMessagesInMemory)
 
   if (storedMessagesInMemory.length > 3){
-    console.log("time to send the messages to the database woof woof ")
+    console.log(users.list(process.env.SLACK_TOKEN))
+
     sendMsg();
   }
 
