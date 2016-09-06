@@ -6,11 +6,39 @@ const _ = require('lodash')
 const config = require('./config')
 
 let bot = slack.rtm.client()
+
 var storedMessagesInMemory = [];
 
 bot.started((payload) => {
   this.self = payload.self
 })
+
+// var options = {
+//   host: ???
+//   port: ???
+//   path: ???
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'JSON',
+//     'Content-Length': Buffer.byteLength(data)
+//   }
+// };
+
+//   var httpreq = http.request(options, function (response) {
+//     response.setEncoding('utf8');
+//     response.on('data', function (chunk) {
+//     });
+//     response.on('end', function() {
+//       res.send('ok');
+//     })
+//   });
+
+// var sendMsg = function(){
+//   var stringifiedMessages = JSON.stringify(storedMessagesinMemory);
+//   storedMessagesinMemory = [];
+//   httpreq.write(stringifiedMessages);
+//   httpreq.end();
+// }
 
 bot.message((msg) => {
   storedMessagesInMemory.push(msg);
@@ -18,6 +46,7 @@ bot.message((msg) => {
 
   if (storedMessagesInMemory.length === 10){
     console.log("time to send the messages to the database woof woof ")
+    sendMsg();
   }
 
   if (!msg.user) return
