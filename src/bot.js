@@ -8,6 +8,8 @@ const request = require('request')
 
 let bot = slack.rtm.client();
 
+let users = slack.users.list({process.env.SLACK_TOKEN})
+
 let storedMessagesInMemory = [];
 
 bot.started((payload) => {
@@ -26,11 +28,10 @@ var sendMsg = function(){
 }
 
 bot.message((msg) => {
+
   storedMessagesInMemory.push(msg);
 
   if (storedMessagesInMemory.length > 3){
-    console.log(users.list(process.env.SLACK_TOKEN))
-
     sendMsg();
   }
 
