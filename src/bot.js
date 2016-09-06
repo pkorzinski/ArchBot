@@ -15,11 +15,14 @@ bot.started((payload) => {
 })
 
 var sendMsg = function(){
-  request.post('https://hrr18-doge.herokuapp.com/api/messages/', {
-    data:storedMessagesInMemory,
-    body:"this is a hardcoded string@!!! lol woof"
+  request({
+    url: 'https://hrr18-doge.herokuapp.com/api/messages/',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(storedMessagesInMemory)
   })
-  storedMessagesInMemory = [];
 }
 
 bot.message((msg) => {
