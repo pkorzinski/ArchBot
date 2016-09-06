@@ -14,31 +14,30 @@ bot.started((payload) => {
   this.self = payload.self
 })
 
-var options = {
-  host: 'https://hrr18-doge.herokuapp.com/',
-  //port: '8080',
-  path: '/api/messages',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'JSON'
-  }
-};
+// var options = {
+//   host: 'https://hrr18-doge.herokuapp.com/',
+//   path: '/api/messages',
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'JSON'
+//   }
+// };
 
-var httpreq = http.request(options, function (response) {
-  response.setEncoding('utf8');
-  response.on('data', function (chunk) {
-  });
-  response.on('end', function() {
-    res.send('ok');
-  })
-});
+// var httpreq = http.request(options, function (response) {
+//   response.setEncoding('utf8');
+//   response.on('data', function (chunk) {
+//   });
+//   response.on('end', function() {
+//     res.send('ok');
+//   })
+// });
 
-var sendMsg = function(){
-  var stringifiedMessages = JSON.stringify(storedMessagesinMemory);
-  storedMessagesinMemory = [];
-  httpreq.write(stringifiedMessages);
-  httpreq.end();
-}
+// var sendMsg = function(){
+//   var stringifiedMessages = JSON.stringify(storedMessagesinMemory);
+//   storedMessagesinMemory = [];
+//   httpreq.write(stringifiedMessages);
+//   httpreq.end();
+// }
 
 
 bot.message((msg) => {
@@ -48,7 +47,7 @@ bot.message((msg) => {
 
   if (storedMessagesInMemory.length > 2){
     console.log("time to send the messages to the database woof woof ")
-    sendMsg();
+    //sendMsg();
   }
 
   if (!msg.user) return
