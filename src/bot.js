@@ -8,7 +8,7 @@ const request = require('request')
 
 let bot = slack.rtm.client();
 
-//let users = slack.users.list({process.env.SLACK_TOKEN})
+let users = slack.users.list(process.env.SLACK_TOKEN)
 
 let storedMessagesInMemory = [];
 
