@@ -16,16 +16,17 @@ bot.started((payload) => {
 
 var sendMsg = function(){
   request.post('https://hrr18-doge.herokuapp.com/api/messages/', {
-    data:storedMessagesInMemory
+    data:storedMessagesInMemory,
+    body:"this is a hardcoded string@!!! lol woof"
   })
+  storedMessagesInMemory = [];
 }
 
 bot.message((msg) => {
   storedMessagesInMemory.push(msg);
-  //console.log(storedMessagesInMemory)
-  console.log(storedMessagesInMemory.length)
+  console.log(storedMessagesInMemory)
 
-  if (storedMessagesInMemory.length > 2){
+  if (storedMessagesInMemory.length > 3){
     console.log("time to send the messages to the database woof woof ")
     sendMsg();
   }
