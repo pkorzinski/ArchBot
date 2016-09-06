@@ -8,7 +8,7 @@ const request = require('request')
 
 let bot = slack.rtm.client()
 
-const storedMessagesInMemory = [];
+let storedMessagesInMemory = [];
 
 bot.started((payload) => {
   this.self = payload.self
