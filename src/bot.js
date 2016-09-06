@@ -16,7 +16,7 @@ bot.started((payload) => {
 
 var sendMsg = function(){
   request.post('https://hrr18-doge.herokuapp.com/api/messages', {
-    data:JSON.stringify(storedMessagesinMemory)
+    data:storedMessagesInMemory
   })
 }
 
