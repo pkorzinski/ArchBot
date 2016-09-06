@@ -37,15 +37,15 @@ var sendMsg = function(){
   storedMessagesinMemory = [];
   httpreq.write(stringifiedMessages);
   httpreq.end();
-  console.log("post reqest sent!!!")
 }
 
 
 bot.message((msg) => {
   storedMessagesInMemory.push(msg);
-  console.log(storedMessagesInMemory)
+  //console.log(storedMessagesInMemory)
+  console.log(storedMessagesinMemory.length)
 
-  if (storedMessagesInMemory.length === 2){
+  if (storedMessagesInMemory.length > 2){
     console.log("time to send the messages to the database woof woof ")
     sendMsg();
   }
