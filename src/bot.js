@@ -8,7 +8,7 @@ const request = require('request')
 
 let bot = slack.rtm.client()
 
-var storedMessagesInMemory = [];
+const storedMessagesInMemory = [];
 
 bot.started((payload) => {
   this.self = payload.self
@@ -23,7 +23,7 @@ var sendMsg = function(){
 bot.message((msg) => {
   storedMessagesInMemory.push(msg);
   //console.log(storedMessagesInMemory)
-  console.log(storedMessagesinMemory.length)
+  console.log(storedMessagesInMemory.length)
 
   if (storedMessagesInMemory.length > 2){
     console.log("time to send the messages to the database woof woof ")
