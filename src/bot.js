@@ -13,38 +13,38 @@ bot.started((payload) => {
   this.self = payload.self
 })
 
-// var options = {
-//   host: ???
-//   port: ???
-//   path: ???
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'JSON',
-//     'Content-Length': Buffer.byteLength(data)
-//   }
-// };
+var options = {
+  host: 'https://hrr18-doge.herokuapp.com/',
+  //port: '8080',
+  path: '/api/messages'
+  method: 'POST',
+  headers: {
+    'Content-Type': 'JSON'
+  }
+};
 
-//   var httpreq = http.request(options, function (response) {
-//     response.setEncoding('utf8');
-//     response.on('data', function (chunk) {
-//     });
-//     response.on('end', function() {
-//       res.send('ok');
-//     })
-//   });
+var httpreq = http.request(options, function (response) {
+  response.setEncoding('utf8');
+  response.on('data', function (chunk) {
+  });
+  response.on('end', function() {
+    res.send('ok');
+  })
+});
 
-// var sendMsg = function(){
-//   var stringifiedMessages = JSON.stringify(storedMessagesinMemory);
-//   storedMessagesinMemory = [];
-//   httpreq.write(stringifiedMessages);
-//   httpreq.end();
-// }
+var sendMsg = function(){
+  var stringifiedMessages = JSON.stringify(storedMessagesinMemory);
+  storedMessagesinMemory = [];
+  httpreq.write(stringifiedMessages);
+  httpreq.end();
+}
+
 
 bot.message((msg) => {
   storedMessagesInMemory.push(msg);
   console.log(storedMessagesInMemory)
 
-  if (storedMessagesInMemory.length === 10){
+  if (storedMessagesInMemory.length === 2){
     console.log("time to send the messages to the database woof woof ")
     sendMsg();
   }
@@ -57,7 +57,7 @@ bot.message((msg) => {
     icon_emoji: config('dog'),
     channel: msg.channel,
     username: 'Dogebot',
-    text: `Wow such message very doge!!!`
+    text: `Wow such message very doge!!! I has your message now.`
   }, (err, data) => {
     if (err) throw err
 
