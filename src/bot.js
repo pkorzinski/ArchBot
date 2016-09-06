@@ -4,6 +4,7 @@
 const slack = require('slack')
 const _ = require('lodash')
 const config = require('./config')
+const http = require('http')
 
 let bot = slack.rtm.client()
 
