@@ -31,12 +31,13 @@ bot.message((msg) => {
     if (err){
       console.error(err)
     } else {
-      msg.username = data;
+      msg.username = data.user.name;
       storedMessagesInMemory.push(msg);
     }
   })
 
   if (storedMessagesInMemory.length > 3){
+    console.log(storedMessagesInMemory)
     sendMsg();
   }
 
