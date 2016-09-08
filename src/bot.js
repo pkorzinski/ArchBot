@@ -23,6 +23,7 @@ var sendMsg = function(){
     },
     body: JSON.stringify(storedMessagesInMemory)
   })
+  storedMessagesInMemory = [];
 }
 
 bot.message((msg) => {
