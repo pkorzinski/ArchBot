@@ -40,6 +40,7 @@ bot.message((msg) => {
   if (storedMessagesInMemory.length > 3){
     console.log(storedMessagesInMemory)
     sendMsg();
+    storedMessagesInMemory = [];
   }
 
   if (!msg.user) return
