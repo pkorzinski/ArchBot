@@ -1,18 +1,16 @@
-
 'use strict'
 
-const slack = require('slack')
-const _ = require('lodash')
-const config = require('./config')
-const request = require('request')
+const slack = require('slack');
+const _ = require('lodash');
+const config = require('./config');
+const request = require('request');
 
 let bot = slack.rtm.client();
-
 let storedMessagesInMemory = [];
 
 bot.started((payload) => {
-  this.self = payload.self
-})
+  this.self = payload.self;
+});
 
 var sendMsg = function(){
   request({
@@ -22,29 +20,28 @@ var sendMsg = function(){
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(storedMessagesInMemory)
-  })
+  });
   storedMessagesInMemory = [];
-}
+};
 
 bot.message((msg) => {
-
-  let username = slack.users.info({token: config('SLACK_TOKEN'), user: msg.user}, function(err, data){
-    if (err){
-      console.error(err)
-    } else {
-      msg.username = data.user.name;
-      storedMessagesInMemory.push(msg);
+  let username = slack.users.info({token: config('SLACK_TOKEN'), user: msg.user}, function(err, data) {
+      if (err){
+        console.error(err);
+      } else {
+        msg.username = data.user.name;
+        storedMessagesInMemory.push(msg);
     }
-  })
+  });
 
-  if (storedMessagesInMemory.length > 3){
-    console.log(storedMessagesInMemory)
+  if (storedMessagesInMemory.length >= 3){
+    console.log(storedMessagesInMemory);
     sendMsg();
     storedMessagesInMemory = [];
   }
 
-  if (!msg.user) return
-  if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return
+  if (!msg.user) return;
+  if (!_.includes(msg.text.match(/<@([A-Z0-9])+>/igm), `<@${this.self.id}>`)) return;
 
   slack.chat.postMessage({
     token: config('SLACK_TOKEN'),
@@ -53,14 +50,13 @@ bot.message((msg) => {
     username: 'Dogebot',
     text: `Wow such message very doge!!! I has your message now.`
   }, (err, data) => {
-    if (err) throw err
+    if (err) throw err;
 
-    let txt = _.truncate(data.message.text)
+    let txt = _.truncate(data.message.text);
+    console.log(`Wow! such server very bot"`);
+  });
+});
 
-    console.log(`Wow! such server very bot"`)
-  })
-})
-
-module.exports = bot
+module.exports = bot;
 
 /////
