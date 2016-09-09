@@ -21,9 +21,9 @@
 
 ## Usage
 
-> A simple front end interface for control of DogeBot on slack. Access to message history and basic search of messages.
+> A simple front end interface to view your team's Slack messages. Will persist data much longer than Slack's free service. Also provides basic search of messages.
 > To use the bot, a user will need to navigate to https://api.slack.com/bot-users and register a new bot user for their Slack team. 
-> The bot must be deployed on Heroku to function. For a guide on deploying Slack bots to heroku, refer to https://blog.heroku.com/how-to-deploy-your-slack-bots-to-heroku.
+> The bot must be deployed on Heroku to function. For a guide on deploying Slack bots to Heroku, refer to https://blog.heroku.com/how-to-deploy-your-slack-bots-to-heroku.
 
 ## Requirements
 
@@ -59,6 +59,7 @@ bower install
 
 View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
 
+When making changes to the bot, the main file to pay attention to is bot.js. Almost everything else can be safely ignored. Also note that both the bot server and the ui server must be running for the program to work.
 
 ## Contributing
 
