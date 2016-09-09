@@ -22,6 +22,8 @@
 ## Usage
 
 > A simple front end interface for control of DogeBot on slack. Access to message history and basic search of messages.
+> To use the bot, a user will need to navigate to https://api.slack.com/bot-users and register a new bot user for their Slack team. 
+> The bot must be deployed on Heroku to function. For a guide on deploying Slack bots to heroku, refer to https://blog.heroku.com/how-to-deploy-your-slack-bots-to-heroku.
 
 ## Requirements
 
