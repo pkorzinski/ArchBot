@@ -1,6 +1,6 @@
 # Project Name
 
-> DogeBot 9000 - So Project Much Wow
+> DogeBot Over 9000 - So Project Much Wow
 
 ## Team
 
@@ -25,9 +25,19 @@
 
 ## Requirements
 
-- Node 6.1.0
-- Redis 2.6.x
-- Postgresql 9.1.x
+- Node 5.7.1
+- express 4.5.1
+- body-parser 1.15.2
+- method-override 2.0.2
+- bower 1.7.9
+- q 1.4.1
+- path 0.12.7
+- botkit 0.0.7
+- dotenv 2.0.0
+- express-http-proxy 0.6.0
+- github-trending 1.3.1
+- lodash 4.6.1
+- slack 6.1.0
 
 
 ## Development
