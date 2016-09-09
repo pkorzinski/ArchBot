@@ -5,13 +5,18 @@ const _ = require('lodash');
 const config = require('./config');
 const request = require('request');
 
+// create a new slack.rtm.client called bot
 let bot = slack.rtm.client();
+
+//create an empty array to store messages locally until they are sent to the ui server and put in the database
 let storedMessagesInMemory = [];
 
 bot.started((payload) => {
   this.self = payload.self;
 });
 
+
+//send the locally stored messages to the ui server so they can be stored permanently, and reset local storage. 
 var sendMsg = function(){
   request({
     url: 'https://hrr18-doge.herokuapp.com/api/messages/',
@@ -24,7 +29,10 @@ var sendMsg = function(){
   storedMessagesInMemory = [];
 };
 
+//all code below runs each time a message is sent on the Slack channel.
 bot.message((msg) => {
+  
+  //get the username from the message, add it to the message object, and push the object into the storedMessagesInMemory array. 
   let username = slack.users.info({token: config('SLACK_TOKEN'), user: msg.user}, function(err, data) {
       if (err){
         console.error(err);
@@ -34,6 +42,7 @@ bot.message((msg) => {
     }
   });
 
+//if there are now more than 3 messages stored in local memory, execute the sendmsg function. 
   if (storedMessagesInMemory.length >= 3){
     console.log(storedMessagesInMemory);
     sendMsg();
@@ -58,5 +67,3 @@ bot.message((msg) => {
 });
 
 module.exports = bot;
-
-/////
