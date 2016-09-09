@@ -61,6 +61,8 @@ View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
 
 When making changes to the bot, the main file to pay attention to is bot.js. Almost everything else can be safely ignored. Also note that both the bot server and the ui server must be running for the program to work.
 
+Also, refer to Slack's Real Time Messaging API for documentation on slack.rtm methods: https://api.slack.com/rtm
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
