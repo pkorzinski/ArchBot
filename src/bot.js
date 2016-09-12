@@ -39,6 +39,7 @@ var getPassword = function(resolve, reject, msg){
     if (err){
       return reject(err);
     } else {
+      console.log("getPassword was called!")
       return resolve(body.password);
     }
   })
@@ -51,7 +52,7 @@ bot.message((msg) => {
 
   if (msg.text === "Dogebot give me a password!"){
     var promise = new Promise(function(resolve, reject, msg){
-
+      console.log("promise function called!")
       getPassword(resolve, reject, msg)
 
     })
