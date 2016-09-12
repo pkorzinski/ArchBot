@@ -30,42 +30,43 @@ var sendMsg = function(){
 };
 
 
-var getPassword = function(msg){
+var getPassword = function(resolve, reject, msg){
   request({
     url: 'https://hrr18-doge.herokuapp.com/api/teams/',
     method: 'POST',
     body: msg.team
   }, function(err, res, body){
     if (err){
-      console.error(err)
+      return reject(err);
     } else {
-      return body.password;
+      return resolve(body.password);
     }
   })
 
 }
 
 
-
 //all code below runs each time a message is sent on the Slack channel.
 bot.message((msg) => {
 
   if (msg.text === "Dogebot give me a password!"){
-    var password = getPassword(msg);
+    var promise = new Promise(getPassword(resolve, reject, msg))
+    promise.then(function(password){
 
-    slack.chat.postMessage({
-        token: config('SLACK_TOKEN'),
-        icon_emoji: config('ICON_EMOJI'),
-        channel: msg.channel,
-        username: 'Dogebot',
-        text: "Your password is: "+password+"and your team code is: "+msg.team,
-      }, (err, data) => {
-        if (err) throw err
+      slack.chat.postMessage({
+          token: config('SLACK_TOKEN'),
+          icon_emoji: config('ICON_EMOJI'),
+          channel: msg.channel,
+          username: 'Dogebot',
+          text: "Your password is: "+password+"and your team code is: "+msg.team,
+        }, (err, data) => {
+          if (err) throw err
+          let txt = _.truncate(data.message.text)
+          console.log(txt)
+        })
 
-        let txt = _.truncate(data.message.text)
+    })
 
-        console.log(txt)
-      })
   }
 
   //get the username from the message, add it to the message object, and push the object into the storedMessagesInMemory array.
