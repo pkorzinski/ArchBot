@@ -35,10 +35,10 @@ var getPassword = function(msg){
     url: 'https://hrr18-doge.herokuapp.com/api/teams/',
     method: 'POST',
     body: msg.team
-  })
-  .then(function(err, res){
-    console.log(err)
+  }, function(err, res, body){
     console.log(res)
+    console.log(err)
+    console.log(body)
   })
 
 }
