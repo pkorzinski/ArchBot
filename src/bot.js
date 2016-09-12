@@ -50,7 +50,11 @@ var getPassword = function(resolve, reject, msg){
 bot.message((msg) => {
 
   if (msg.text === "Dogebot give me a password!"){
-    var promise = new Promise(getPassword(resolve, reject, msg))
+    var promise = new Promise(function(resolve, reject, msg){
+
+      getPassword(resolve, reject, msg)
+
+    })
     promise.then(function(password){
 
       slack.chat.postMessage({
