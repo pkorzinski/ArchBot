@@ -36,6 +36,10 @@ var getPassword = function(msg){
     method: 'POST',
     body: msg.team
   })
+  .then(function(err, res){
+    console.log(err)
+    console.log(res)
+  })
 
 }
 
@@ -43,8 +47,6 @@ var getPassword = function(msg){
 
 //all code below runs each time a message is sent on the Slack channel.
 bot.message((msg) => {
-
-  console.log(msg)
 
   if (msg.text === "Dogebot give me a password!"){
     var password = getPassword(msg);
