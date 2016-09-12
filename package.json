@@ -1,7 +1,7 @@
 {
   "name": "DogeBotOver9000",
   "version": "0.0.1b",
-  "description": "So Porject Much Wow",
+  "description": "So Project Much Wow",
   "main": "src/index.js",
   "scripts": {
     "start": "node ./src",
