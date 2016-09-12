@@ -39,7 +39,7 @@ var getPassword = function(msg, callback){
     if (err){
       console.error(err)
     } else {
-      console.log(body.password)
+      console.log(body)
       console.log("getPassword was called!")
       callback(body.password);
     }
