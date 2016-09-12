@@ -36,9 +36,11 @@ var getPassword = function(msg){
     method: 'POST',
     body: msg.team
   }, function(err, res, body){
-    console.log(res)
-    console.log(err)
-    console.log(body)
+    if (err){
+      console.error(err)
+    } else {
+      return body.password;
+    }
   })
 
 }
@@ -50,6 +52,20 @@ bot.message((msg) => {
 
   if (msg.text === "Dogebot give me a password!"){
     var password = getPassword(msg);
+
+    slack.chat.postMessage({
+        token: config('SLACK_TOKEN'),
+        icon_emoji: config('ICON_EMOJI'),
+        channel: msg.channel,
+        username: 'Dogebot',
+        text: "Your password is: "+password+"and your team code is: "+msg.team,
+      }, (err, data) => {
+        if (err) throw err
+
+        let txt = _.truncate(data.message.text)
+
+        console.log(txt)
+      })
   }
 
   //get the username from the message, add it to the message object, and push the object into the storedMessagesInMemory array.
