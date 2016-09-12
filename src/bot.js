@@ -30,11 +30,11 @@ var sendMsg = function(){
 };
 
 
-var getPassword = function(){
+var getPassword = function(msg){
   request({
     url: 'https://hrr18-doge.herokuapp.com/api/teams/',
     method: 'POST',
-    body: this.self
+    body: msg.team
   })
 
 }
@@ -44,9 +44,10 @@ var getPassword = function(){
 //all code below runs each time a message is sent on the Slack channel.
 bot.message((msg) => {
 
+  console.log(msg)
+
   if (msg.text === "Dogebot give me a password!"){
-    var password = getPassword();
-    console.log(this.self)
+    var password = getPassword(msg);
   }
 
   //get the username from the message, add it to the message object, and push the object into the storedMessagesInMemory array.
