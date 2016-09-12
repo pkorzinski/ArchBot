@@ -44,7 +44,7 @@ var getPassword = function(){
 //all code below runs each time a message is sent on the Slack channel.
 bot.message((msg) => {
 
-  if (msg === "Dogebot give me a password!"){
+  if (msg.text === "Dogebot give me a password!"){
     var password = getPassword();
     console.log(this.self)
   }
