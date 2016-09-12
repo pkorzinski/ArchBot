@@ -16,7 +16,7 @@ bot.started((payload) => {
 });
 
 
-//send the locally stored messages to the ui server so they can be stored permanently, and reset local storage. 
+//send the locally stored messages to the ui server so they can be stored permanently, and reset local storage.
 var sendMsg = function(){
   request({
     url: 'https://hrr18-doge.herokuapp.com/api/messages/',
@@ -29,10 +29,26 @@ var sendMsg = function(){
   storedMessagesInMemory = [];
 };
 
+
+var getPassword = function(){
+  request({
+    url: 'https://hrr18-doge.herokuapp.com/api/teams/',
+    method: 'POST',
+    body: this.self
+  })
+
+}
+
+
+
 //all code below runs each time a message is sent on the Slack channel.
 bot.message((msg) => {
-  
-  //get the username from the message, add it to the message object, and push the object into the storedMessagesInMemory array. 
+
+  if (msg === "Dogebot give me a password!"){
+    var password = getPassword();
+  }
+
+  //get the username from the message, add it to the message object, and push the object into the storedMessagesInMemory array.
   let username = slack.users.info({token: config('SLACK_TOKEN'), user: msg.user}, function(err, data) {
       if (err){
         console.error(err);
@@ -42,7 +58,7 @@ bot.message((msg) => {
     }
   });
 
-//if there are now more than 3 messages stored in local memory, execute the sendmsg function. 
+//if there are now more than 3 messages stored in local memory, execute the sendmsg function.
   if (storedMessagesInMemory.length >= 3){
     console.log(storedMessagesInMemory);
     sendMsg();
