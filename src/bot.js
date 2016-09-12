@@ -46,6 +46,7 @@ bot.message((msg) => {
 
   if (msg === "Dogebot give me a password!"){
     var password = getPassword();
+    console.log(this.self)
   }
 
   //get the username from the message, add it to the message object, and push the object into the storedMessagesInMemory array.
