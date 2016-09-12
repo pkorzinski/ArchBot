@@ -53,7 +53,19 @@ bot.message((msg) => {
   if (msg.text === "Dogebot give me a password!"){
     var promise = new Promise(function(resolve, reject, msg){
       console.log("promise function called!")
-      getPassword(resolve, reject, msg)
+
+      request({
+        url: 'https://hrr18-doge.herokuapp.com/api/teams/',
+        method: 'POST',
+        body: msg.team
+      }, function(err, res, body){
+        if (err){
+          reject(err);
+        } else {
+          console.log("getPassword was called!")
+          resolve(body.password);
+        }
+      })
 
     })
     promise.then(function(password){
