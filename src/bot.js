@@ -30,17 +30,17 @@ var sendMsg = function(){
 };
 
 
-var getPassword = function(resolve, reject, msg){
+var getPassword = function(msg, callback){
   request({
     url: 'https://hrr18-doge.herokuapp.com/api/teams/',
     method: 'POST',
     body: msg.team
   }, function(err, res, body){
     if (err){
-      return reject(err);
+      console.error(err)
     } else {
       console.log("getPassword was called!")
-      return resolve(body.password);
+      callback(body.password);
     }
   })
 
@@ -51,24 +51,8 @@ var getPassword = function(resolve, reject, msg){
 bot.message((msg) => {
 
   if (msg.text === "Dogebot give me a password!"){
-    var promise = new Promise(function(resolve, reject, msg){
-      console.log("promise function called!")
 
-      request({
-        url: 'https://hrr18-doge.herokuapp.com/api/teams/',
-        method: 'POST',
-        body: msg.team
-      }, function(err, res, body){
-        if (err){
-          reject(err);
-        } else {
-          console.log("getPassword was called!")
-          resolve(body.password);
-        }
-      })
-
-    })
-    promise.then(function(password){
+    getPassword(msg, function(password){
 
       slack.chat.postMessage({
           token: config('SLACK_TOKEN'),
@@ -81,6 +65,7 @@ bot.message((msg) => {
           let txt = _.truncate(data.message.text)
           console.log(txt)
         })
+
 
     })
 
