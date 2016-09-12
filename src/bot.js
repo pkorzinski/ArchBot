@@ -39,6 +39,7 @@ var getPassword = function(msg, callback){
     if (err){
       console.error(err)
     } else {
+      console.log(body.password)
       console.log("getPassword was called!")
       callback(body.password);
     }
@@ -59,7 +60,7 @@ bot.message((msg) => {
           icon_emoji: config('ICON_EMOJI'),
           channel: msg.channel,
           username: 'Dogebot',
-          text: "Your password is: "+password+"and your team code is: "+msg.team,
+          text: "Your password is: "+password+" and your team code is: "+msg.team,
         }, (err, data) => {
           if (err) throw err
           let txt = _.truncate(data.message.text)
