@@ -39,7 +39,7 @@ var getPassword = function(msg, callback){
     if (err){
       console.error(err)
     } else {
-      console.log(JSON.parse(body))
+      console.log(body)
       console.log("getPassword was called!")
       var parsedBody = JSON.parse(body)
       callback(parsedBody.password);
