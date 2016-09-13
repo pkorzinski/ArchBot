@@ -31,10 +31,14 @@ var sendMsg = function(){
 
 
 var getPassword = function(msg, callback){
+  var obj = JSON.stringify{msg.team}
   request({
     url: 'https://hrr18-doge.herokuapp.com/api/teams/',
     method: 'POST',
-    body: msg.team
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: obj
   }, function(err, res, body){
     if (err){
       console.error(err)
