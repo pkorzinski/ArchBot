@@ -42,7 +42,7 @@ var getPassword = function(msg, callback){
     body: msg.team
   }, function(err, res, body){
     if (err){
-      console.error(err);
+      console.error('error', err);
     } else {
       console.log("getPassword was called!", body);
       var parsedBody = JSON.parse(body);
