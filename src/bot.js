@@ -39,7 +39,7 @@ var getPassword = function(msg, callback){
     headers: {
       'Content-Type': 'application/json'
     },
-    body: obj
+    body: msg.team
   }, function(err, res, body){
     if (err){
       console.error(err);
