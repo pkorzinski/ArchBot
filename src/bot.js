@@ -32,11 +32,12 @@ var sendMsg = function(){
 
 var getPassword = function(msg, callback){
   console.log('getpassword', msg);
-  var obj = JSON.stringify(msg.team);
+  var obj = {};
+  obj.team = JSON.stringify(msg.team);
   request({
     url: 'https://hrr18-doge.herokuapp.com/api/teams/',
     method: 'POST',
-    body: msg.team
+    body: obj
   }, function(err, res, body){
     if (err){
       console.error('error', err);
