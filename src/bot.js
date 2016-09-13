@@ -34,7 +34,7 @@ var getPassword = function(msg, callback){
   request({
     url: 'https://hrr18-doge.herokuapp.com/api/teams/',
     method: 'POST',
-    body: msg.team
+    body: JSON.stringify(msg.team)
   }, function(err, res, body){
     if (err){
       console.error(err)
