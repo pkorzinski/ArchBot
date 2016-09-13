@@ -31,8 +31,8 @@ var sendMsg = function(){
 
 
 var getPassword = function(msg, callback){
-  console.log('getpassword', msg)
-  var obj = JSON.stringify(msg.team)
+  console.log('getpassword', msg);
+  var obj = JSON.stringify(msg.team);
   request({
     url: 'https://hrr18-doge.herokuapp.com/api/teams/',
     method: 'POST',
@@ -42,13 +42,13 @@ var getPassword = function(msg, callback){
     body: obj
   }, function(err, res, body){
     if (err){
-      console.error(err)
+      console.error(err);
     } else {
-      console.log("getPassword was called!")
-      var parsedBody = JSON.parse(body)
+      console.log("getPassword was called!", body);
+      var parsedBody = JSON.parse(body);
       callback(parsedBody.password);
     }
-  })
+  });
 
 }
 
