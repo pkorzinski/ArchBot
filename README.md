@@ -1,6 +1,6 @@
 # Project Name
 
-> DogeBot Over 9000 - So Project Much Wow
+> ArchBot
 
 ## Team
 
